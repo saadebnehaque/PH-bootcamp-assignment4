@@ -1,7 +1,9 @@
 const cardContainer = document.getElementById('cardContainer');
+const totalJobs = cardContainer.childElementCount;
 const total = document.getElementById('totalCount');
-total.innerText = cardContainer.childElementCount
-
+total.innerText = totalJobs;
+const availableJobs = document.getElementById('availableJobs');
+availableJobs.innerText =totalJobs+' jobs';
 
 
 
