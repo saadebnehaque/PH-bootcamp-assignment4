@@ -1,5 +1,4 @@
 const cardContainer = document.getElementById('cardContainer');
-
 const totalCountEl = document.getElementById('totalCount');
 const interviewCountEl = document.getElementById('interviewCount');
 const rejectedCountEl = document.getElementById('rejectedCount');
@@ -9,14 +8,16 @@ const tabs = document.querySelectorAll('.tabBtn');
 
 
 function updateDashboard() {
+    const cards = document.querySelectorAll('.card');
     let interviewCount = 0;
     let rejectedCount = 0;
-    const cards = document.querySelectorAll('.card');
+
 
     cards.forEach(card => {
-        const statusText = card.querySelector('.status').innerText;
-        if (statusText.toLowerCase() === 'interview') interviewCount++;
-        if (statusText.toLowerCase() === 'rejected') rejectedCount++;
+        const statusText = card.querySelector('.status').innerText.trim().toLowerCase();
+
+        if (statusText === 'interview') interviewCount++;
+        if (statusText === 'rejected') rejectedCount++;
     })
 
     interviewCountEl.innerText = interviewCount;
@@ -27,20 +28,20 @@ function updateDashboard() {
     const activeTabBtn = document.querySelector('.tabBtn.text-white');
     let activeTabName;
     if (activeTabBtn) {
-        activeTabName = activeTabBtn.innerText;
+        activeTabName = activeTabBtn.innerText.toLowerCase();
     } else {
-        activeTabName = 'All';
+        activeTabName = 'all';
     }
     applyFilter(activeTabName);
 }
 
 
 function applyFilter(filterType) {
+    const cards = document.querySelectorAll('.card'); 
     let visibleCount = 0;
-    const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
-        const statusText = card.querySelector('.status').innerText;
-        const shouldShow = (filterType === 'All' || filterType.toLowerCase() === statusText.toLowerCase());
+        const statusText = card.querySelector('.status').innerText.trim().toLowerCase(); 
+        const shouldShow = (filterType === 'all' || filterType === statusText); 
 
         if (shouldShow) {
             card.classList.remove('hidden');
@@ -85,12 +86,13 @@ cardContainer.addEventListener('click', function (e) {
     if (!card) return;
 
     const statusDiv = card.querySelector('.status');
+    const clickedText = e.target.innerText.trim().toLowerCase();
 
-    if (e.target.innerText.toLowerCase() === 'interview') {
+    if (clickedText === 'interview') { 
         statusDiv.innerHTML = `<button class="statusGreen px-3 py-2 bg-[#bbfae5] text-[#10B981] border font-medium rounded">Interview</button>
 `
         updateDashboard()
-    } else if (e.target.innerText.toLowerCase() === 'rejected') {
+    } else if (clickedText === 'rejected') { 
         statusDiv.innerHTML = `  <button class="statusRed px-3 py-2 bg-[#fdc0c0] text-[#EF4444] border font-medium rounded">Rejected</button>`
         updateDashboard()
     } else if (e.target.closest('.dltBtn')) {
@@ -102,4 +104,3 @@ cardContainer.addEventListener('click', function (e) {
 });
 
 updateDashboard();
-
