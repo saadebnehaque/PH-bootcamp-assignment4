@@ -18,7 +18,7 @@
 </head>
 
 <body class=" bg-[#F8FAFC]">
-    <header class=" max-w-[80%] mx-auto mt-[60px] space-y-5">
+    <header class=" sticky top-0 z-50 bg-[#F8FAFC] max-w-[80%] mx-auto mt-[60px] space-y-5">
         <h1 class=" text-[32px] font-bold text-[#002C5C]">Job Application Tracker</h1>
         <div class=" grid grid-cols-3 gap-4">
             <div class="  bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
@@ -37,14 +37,14 @@
     </header>
     <hr class="w-[80%] mx-auto my-7.5 border-[#E6E7E9]">
     <main class=" w-[80%] mx-auto space-y-6">
-        <div class="flex justify-between">
+        <div class=" flex justify-between">
             <h3 class=" font-semibold text-xl text-[#002C5C]">Available Jobs</h3>
             <p class="text-[#64748B] font-medium" id="availableJobs">8 jobs</p>
         </div>
-        <!-- ........................... -->
+
 
         <!-- tabs -->
-        <div class="flex gap-2 text-xs font-semibold mb-4">
+        <div id="tabs" class="flex gap-2 text-xs font-semibold mb-4">
             <button id="tabAll"
                 class=" tabBtn p-3 w-20 rounded text-white bg-[#3B82F6] border border-transparent">All</button>
             <button id="tabInterview"
