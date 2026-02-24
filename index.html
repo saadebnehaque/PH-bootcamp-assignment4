@@ -11,339 +11,281 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        * {
-            font-family: "Geist", sans-serif;
-        }
+        * { font-family: "Geist", sans-serif; }
+        #tabs::-webkit-scrollbar { display: none; }
     </style>
 </head>
 
-<body class=" bg-[#F8FAFC]">
-    <header class=" bg-[#F8FAFC] max-w-[80%] mx-auto mt-[60px] space-y-5">
-        <h1 class=" text-[32px] font-bold text-[#002C5C]">Job Application Tracker</h1>
-        <div class=" grid grid-cols-3 gap-4">
-            <div class="  bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
-                <p class=" text-[#323B49] text-[14px] font-medium">Total</p>
-                <h2 id="totalCount" class="text-[24px] font-bold text-[#002C5C]">0</h2>
+<body class="bg-[#F8FAFC]">
+    <header class="w-[90%] md:max-w-[80%] mx-auto mt-10 md:mt-16 space-y-5">
+        <h1 class="text-2xl md:text-3xl font-bold text-[#002C5C]">Job Application Tracker</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
+                <p class="text-[#323B49] text-sm font-medium">Total</p>
+                <h2 id="totalCount" class="text-2xl font-bold text-[#002C5C]">0</h2>
             </div>
-            <div class="  bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
-                <p class=" text-[#323B49] text-[14px] font-medium">Interview</p>
-                <h2 id="interviewCount" class="text-[24px] font-bold text-[#10B981]">0</h2>
+            <div class="bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
+                <p class="text-[#323B49] text-sm font-medium">Interview</p>
+                <h2 id="interviewCount" class="text-2xl font-bold text-[#10B981]">0</h2>
             </div>
-            <div class="  bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
-                <p class=" text-[#323B49] text-[14px] font-medium">Rejected</p>
-                <h2 id="rejectedCount" class="text-[24px] font-bold text-[#EF4444]">0</h2>
+            <div class="bg-white p-5 rounded-lg border border-[#F1F2F4] space-y-2">
+                <p class="text-[#323B49] text-sm font-medium">Rejected</p>
+                <h2 id="rejectedCount" class="text-2xl font-bold text-[#EF4444]">0</h2>
             </div>
         </div>
     </header>
-    <hr class="w-[80%] mx-auto my-7.5 border-[#E6E7E9]">
-    <main class=" w-[80%] mx-auto space-y-6">
-        <div class=" flex justify-between">
-            <h3 class=" font-semibold text-xl text-[#002C5C]">Available Jobs</h3>
+
+    <hr class="w-[90%] md:w-[80%] mx-auto my-8 border-[#E6E7E9]">
+
+    <main class="w-[90%] md:w-[80%] mx-auto space-y-6 mb-12">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+            <h3 class="font-semibold text-xl text-[#002C5C]">Available Jobs</h3>
             <p class="text-[#64748B] font-medium" id="availableJobs">8 jobs</p>
         </div>
 
-
-        <!-- tabs -->
-        <div id="tabs" class="flex gap-2 text-xs font-semibold mb-4">
-            <button id="tabAll"
-                class=" tabBtn p-3 w-20 rounded text-white bg-[#3B82F6] border border-transparent">All</button>
-            <button id="tabInterview"
-                class="tabBtn p-3 w-20 rounded text-[#64748B] bg-white border border-[#F1F2F4]">Interview</button>
-            <button id="tabRejected"
-                class="tabBtn p-3 w-20 rounded text-[#64748B] bg-white border border-[#F1F2F4]">Rejected</button>
+        <div id="tabs" class="flex gap-2 text-xs font-semibold overflow-x-auto pb-2">
+            <button class="tabBtn p-3 min-w-[80px] rounded text-white bg-[#3B82F6] border border-transparent">All</button>
+            <button class="tabBtn p-3 min-w-[80px] rounded text-[#64748B] bg-white border border-[#F1F2F4]">Interview</button>
+            <button class="tabBtn p-3 min-w-[80px] rounded text-[#64748B] bg-white border border-[#F1F2F4]">Rejected</button>
         </div>
-        <!-- Interview cards -->
 
-        <div class=" space-y-4 " id="cardContainer">
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
-
+        <div class="space-y-4" id="cardContainer">
+            
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">Mobile First Corp</h3>
-                        <p class=" text-[#64748B]">React Native Developer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">Mobile First Corp</h3>
+                        <p class="text-[#64748B]">React Native Developer</p>
                     </div>
-                    <p class=" text-[#64748B]">Remote
-                        •
-                        Full-time
-                        •
-                        $130,000 - $175,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">Remote • Full-time • $130,000 - $175,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Build cross-platform mobile applications using React
-                            Native. Work on products used by
-                            millions of users worldwide.</p>
+                        <p class="text-[#323B49] text-sm">Build cross-platform mobile applications using React Native.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border transition-all duration-150 hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border transition-all duration-150 hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">WebFlow Agency</h3>
-                        <p class=" text-[#64748B]">Web Designer & Developer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">WebFlow Agency</h3>
+                        <p class="text-[#64748B]">Web Designer & Developer</p>
                     </div>
-                    <p class=" text-[#64748B]">Los Angeles, CA
-                        •
-                        Part-time
-                        •
-                        $80,000 - $120,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">Los Angeles, CA • Part-time • $80,000 - $120,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Create stunning web experiences for high-profile
-                            clients. Must have portfolio and experience with modern web design trends.</p>
+                        <p class="text-[#323B49] text-sm">Create stunning web experiences for high-profile clients.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">DataViz Solutions</h3>
-                        <p class=" text-[#64748B]">Data Visualization Specialist</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">DataViz Solutions</h3>
+                        <p class="text-[#64748B]">Data Visualization Specialist</p>
                     </div>
-                    <p class=" text-[#64748B]">Boston, MA
-                        •
-                        Full-time
-                        •
-                        $125,000 - $165,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">Boston, MA • Full-time • $125,000 - $165,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Transform complex data into compelling
-                            visualizations. Required skills: D3.js, React, and strong analytical thinking.
-                        </p>
+                        <p class="text-[#323B49] text-sm">Transform complex data into compelling visualizations.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">CloudFirst Inc</h3>
-                        <p class=" text-[#64748B]">Backend Developer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">CloudFirst Inc</h3>
+                        <p class="text-[#64748B]">Backend Developer</p>
                     </div>
-                    <p class=" text-[#64748B]">Seattle, WA
-                        •
-                        Full-time
-                        •
-                        $140,000 - $190,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">Seattle, WA • Full-time • $140,000 - $190,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Design and maintain scalable backend systems using
-                            Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
+                        <p class="text-[#323B49] text-sm">Design and maintain scalable backend systems.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">Innovation Labs</h3>
-                        <p class=" text-[#64748B]">UI/UX Engineer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">Innovation Labs</h3>
+                        <p class="text-[#64748B]">UI/UX Engineer</p>
                     </div>
-                    <p class=" text-[#64748B]">Austin, TX
-                        •
-                        Full-time
-                        •
-                        $110,000 - $150,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">Austin, TX • Full-time • $110,000 - $150,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Create beautiful and functional user interfaces for
-                            our suite of products. Strong design skills and frontend development expertise required.
-                        </p>
+                        <p class="text-[#323B49] text-sm">Create functional user interfaces for our products.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">MegaCorp Solutions</h3>
-                        <p class=" text-[#64748B]">JavaScript Developer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">MegaCorp Solutions</h3>
+                        <p class="text-[#64748B]">JavaScript Developer</p>
                     </div>
-                    <p class=" text-[#64748B]">New York, NY
-                        •
-                        Full-time
-                        •
-                        $130,000 - $170,00</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">New York, NY • Full-time • $130,000 - $170,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Build enterprise applications with JavaScript and
-                            modern frameworks. We offer competitive compensation, health insurance, and professional
-                            development opportunities.</p>
+                        <p class="text-[#323B49] text-sm">Build enterprise apps with modern JS frameworks.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">StartupXYZ</h3>
-                        <p class=" text-[#64748B]">Full Stack Engineer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">StartupXYZ</h3>
+                        <p class="text-[#64748B]">Full Stack Engineer</p>
                     </div>
-                    <p class=" text-[#64748B]">Remote
-                        •
-                        Full-time
-                        •
-                        $120,000 - $160,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">Remote • Full-time • $120,000 - $160,000</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">Join our fast-growing startup and work on our core
-                            platform. Experience with Node.js and React required. Great benefits and equity package
-                            included.</p>
+                        <p class="text-[#323B49] text-sm">Join a fast-growing startup in the fintech space.</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
-            <div class="card p-6 flex justify-between border border-[#F1F2F4] rounded-lg">
-                <div id="cardContent" class=" space-y-5">
 
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row justify-between border border-[#F1F2F4] rounded-lg bg-white">
+                <div class="space-y-4 md:space-y-5 w-full">
                     <div class="space-y-1">
-                        <h3 class=" text-[18px] font-medium text-[#002C5C]">TechCorp Industries</h3>
-                        <p class=" text-[#64748B]">Senior Frontend Developer</p>
+                        <h3 class="text-lg font-medium text-[#002C5C]">TechCorp Industries</h3>
+                        <p class="text-[#64748B]">Senior Frontend Developer</p>
                     </div>
-                    <p class=" text-[#64748B]">San Francisco, CA
-                        •
-                        Full-time
-                        •
-                        $130,000 - $175,000</p>
-                    <div class=" space-y-2">
+                    <p class="text-[#64748B] text-sm">San Francisco, CA • Full-time • $130k - $175k</p>
+                    <div class="space-y-2">
                         <div class="status">
-                            <button class=" statusNot px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded">Not
-                                Applied</button>
+                            <button class="px-3 py-2 bg-[#EEF4FF] text-[#002C5C] font-medium rounded text-xs">Not Applied</button>
                         </div>
-                        <p class=" text-[#323B49] text-[14px]">We are looking for an experienced Frontend Developer
-                            to build scalable web applications using React and TypeScript. You will work with a
-                            talented team on cutting-edge projects.</p>
+                        <p class="text-[#323B49] text-sm">Lead the frontend development of our core SaaS platform.</p>
                     </div>
-                    <div class="flex gap-2 ">
-                        <button
-                            class=" px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white active:scale-90 ">Interview</button>
-                        <button
-                            class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white active:scale-90">Rejected</button>
+                    <div class="flex flex-col md:flex-row md:items-center gap-3">
+                        <div class="flex gap-2">
+                            <button class="px-3 py-2 rounded font-semibold text-[#10B981] border hover:bg-[#10B981] hover:text-white transition-all text-xs">INTERVIEW</button>
+                            <button class="px-3 py-2 rounded font-semibold text-[#EF4444] border hover:bg-[#EF4444] hover:text-white transition-all text-xs">REJECTED</button>
+                        </div>
+                        <div class="dltBtn flex items-center justify-center p-2 border border-[#F1F2F4] rounded-full cursor-pointer w-fit md:hidden">
+                            <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
+                        </div>
                     </div>
-
-
                 </div>
-                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full">
-                    <img src="./Resources/delete.png" alt="Detele Button">
+                <div class="dltBtn p-2 border border-[#F1F2F4] h-fit rounded-full cursor-pointer hidden md:block">
+                    <img src="./Resources/delete.png" alt="Delete" class="w-5 h-5">
                 </div>
             </div>
+
         </div>
-        <div id="noJob"
-            class="flex flex-col gap-5 items-center text-center bg-white px-10 py-15 rounded-lg border border-[#F1F2F4]">
-            <img src="./Resources/jobs.png" alt="">
+
+        <div id="noJob" class="hidden flex flex-col gap-5 items-center text-center bg-white py-12 rounded-lg border border-[#F1F2F4]">
+            <img src="./Resources/jobs.png" alt="No Jobs" class="w-16">
             <div class="space-y-1">
-                <h3 class=" text-2xl text-[#002C5C] font-semibold">No jobs available</h3>
-                <p class=" text-[#64748B]">Check back soon for new job opportunities</p>
+                <h3 class="text-xl font-semibold text-[#002C5C]">No jobs available</h3>
+                <p class="text-[#64748B]">Check back soon for new opportunities</p>
             </div>
         </div>
-
-
     </main>
 
-
-
-
-
-    <!-- <script src="./scr.js"></script> -->
     <script src="./script.js"></script>
 </body>
-
 </html>
